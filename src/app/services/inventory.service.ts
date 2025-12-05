@@ -29,6 +29,7 @@ export class InventoryService {
   }
 
   searchItemByName(itemName: string): Observable<any> {
+    // encode name for url
     const encodedName = encodeURIComponent(itemName);
     return this.http.get(`${this.apiUrl}/${encodedName}`);
   }
@@ -43,6 +44,7 @@ export class InventoryService {
   }
 
   deleteItem(itemName: string): Observable<any> {
+    // encode name for url path
     const encodedName = encodeURIComponent(itemName);
     return this.http.delete(`${this.apiUrl}/${encodedName}`);
   }

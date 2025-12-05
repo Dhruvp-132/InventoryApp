@@ -72,6 +72,7 @@ export class Tab3Page {
     });
   }
 
+  // map server data format to our interface
   private mapItem(raw: any): InventoryItem {
     return {
       itemId: String(raw.itemId || raw.item_id || ''),
@@ -93,6 +94,7 @@ export class Tab3Page {
               this.itemToEdit.quantity >= 0 && this.itemToEdit.price >= 0);
   }
 
+  // build payload in snake_case for api
   private buildUpdatePayload(): any {
     if (!this.itemToEdit) return null;
 
@@ -144,6 +146,7 @@ export class Tab3Page {
       return;
     }
 
+    // confirm before deleting
     const confirm = await this.alertController.create({
       header: 'Confirm Delete',
       message: `Delete "${this.searchName.trim()}"?`,

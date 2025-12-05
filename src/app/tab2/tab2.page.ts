@@ -66,6 +66,7 @@ export class Tab2Page implements OnInit {
           items = response.data;
         }
 
+        // filter only featured items
         this.featuredItems = items
           .map(raw => this.mapItem(raw))
           .filter(item => item.featuredItem);
@@ -81,6 +82,7 @@ export class Tab2Page implements OnInit {
     });
   }
 
+  // convert server response to our item format
   private mapItem(raw: any): InventoryItem {
     return {
       itemId: String(raw.itemId || raw.item_id || ''),
@@ -107,6 +109,7 @@ export class Tab2Page implements OnInit {
       return;
     }
 
+    // api expects snake_case, convert from camelCase
     const payload: any = {
       item_name: this.newItem.itemName.trim(),
       category: this.newItem.category,
@@ -117,6 +120,7 @@ export class Tab2Page implements OnInit {
       featured_item: this.newItem.featuredItem ? 1 : 0
     };
 
+    // special note is optional
     if (this.newItem.specialNote && this.newItem.specialNote.trim() !== '') {
       payload.special_note = this.newItem.specialNote.trim();
     }

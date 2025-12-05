@@ -10,8 +10,8 @@ import { Tab4PageRoutingModule } from './tab4-routing.module';
     IonicModule,
     CommonModule,
     FormsModule,
-    Tab4PageRoutingModule // Imports the routing specific to this page
+    Tab4PageRoutingModule
   ],
-  declarations: [Tab4Page] // Declares the component here, NOT in app.module.ts
+  declarations: [Tab4Page]
 })
 export class Tab4PageModule {}

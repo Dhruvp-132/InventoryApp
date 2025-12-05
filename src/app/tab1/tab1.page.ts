@@ -9,7 +9,7 @@ import { InventoryService, InventoryItem } from '../services/inventory.service';
   standalone: false
 })
 export class Tab1Page implements OnInit {
-  
+
   items: InventoryItem[] = [];
   searchName: string = '';
   searchedItem: InventoryItem | null = null;
@@ -21,6 +21,7 @@ export class Tab1Page implements OnInit {
     private inventoryService: InventoryService
   ) {}
 
+  // server returns different field names sometimes, need to handle both
   private mapItem(raw: any): InventoryItem {
     return {
       itemId: String(raw.itemId || raw.item_id || ''),
@@ -49,6 +50,7 @@ export class Tab1Page implements OnInit {
 
     this.inventoryService.getAllItems().subscribe({
       next: (response: any) => {
+        // api sometimes returns array directly or wrapped in data object
         if (Array.isArray(response)) {
           this.items = response.map(r => this.mapItem(r));
         } else if (response?.data && Array.isArray(response.data)) {
@@ -81,6 +83,7 @@ export class Tab1Page implements OnInit {
 
     this.inventoryService.searchItemByName(this.searchName.trim()).subscribe({
       next: (response: any) => {
+        // handle single object or array response
         if (response && typeof response === 'object' && !Array.isArray(response)) {
           this.searchedItem = this.mapItem(response);
         } else if (Array.isArray(response) && response.length > 0) {
@@ -104,6 +107,7 @@ export class Tab1Page implements OnInit {
     this.searchedItem = null;
   }
 
+  // returns color class for status badge
   getStockStatusColor(status: string): string {
     if (!status) return 'medium';
     const s = status.toLowerCase();
