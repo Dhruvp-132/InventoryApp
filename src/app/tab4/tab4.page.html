@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Privacy & Security</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showHelp()">
+        <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Privacy & Security</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Data Privacy</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        This app connects to a remote RESTful API. It stores only inventory data (item name, category, 
+        stock details, supplier information). No authentication credentials or sensitive personal 
+        information are collected.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Data Transmission</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        All communication uses HTTP(S) requests with JSON data. The backend server enforces constraints 
+        such as unique item names. Inventory records are stored in a remote database.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>User Responsibilities</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Do not enter real confidential information. Use fictional example data for assessment work. 
+        Always close the app when finished, especially on shared computers.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Limitations</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        This is an academic exercise, not for production use. It does not include advanced security 
+        controls such as role-based access control or encryption at rest.
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

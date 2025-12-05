@@ -1,0 +1,14 @@
+ion-card-title {
+  font-weight: 600;
+}
+
+ion-card-content {
+  ion-item {
+    --inner-padding-end: 8px;
+  }
+}
+
+.ion-text-center p {
+  margin-top: 8px;
+  color: var(--ion-color-medium);
+}
